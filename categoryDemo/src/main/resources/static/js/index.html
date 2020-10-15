@@ -1,0 +1,332 @@
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="author" content="CJ O Shopping" />
+<meta name="format-detection" content="telephone=no">
+<title>회원가입 :: CJO</title>
+<link rel="stylesheet" type="text/css" href="http://dev-image2.cjmall.net/public/confirm/static/deploy/webjars/ec-markup-common/dist/common-cjos-mobile/others/e65885d3d8bcf008e8d88aac338d30dd/css/common.cjos.mobile.min.css" data-config-version="innerJarVersion"  >
+<link rel="stylesheet" type="text/css" href="http://dev-image2.cjmall.net/public/confirm/static/deploy/webjars/ec-markup-common/dist/common-cjmall-mobile/others/1ee231d064a9e75573a5e0775efd8fcb/css/common.cjmall.mobile.min.css" data-config-version="innerJarVersion"  >
+<link rel="stylesheet" type="text/css" href="http://dev-image2.cjmall.net/public/confirm/static/deploy/webjars/ec-markup-common/dist/page-cjmall-mobile/others/5b757d1d45e8ecba603b02d692a9f3d6/css/page.cjmall.mobile.account.min.css" data-config-version="innerJarVersion"  >
+<link rel="stylesheet" type="text/css" href="http://dev-image2.cjmall.net/public/confirm/static/deploy/webjars/ec-markup-common/dist/common-cjmall-mobile/others/1ee231d064a9e75573a5e0775efd8fcb/css/common.cjmall.mobile.optional.min.css" data-config-version="innerJarVersion"  >
+<script type="text/javascript" src="/js/jquery-1.11.2.min.js"></script>
+</head>
+<body>
+<div id="wrap">
+
+
+<!-- header -->
+<header id="header" class="visible head_sub_type">
+	<!-- 190918 앱다운로드 유도 영역 -->
+	<div class="noti_app_install">		
+		<a href="#" title="다운로드 사이트로 이동" class="u_btn btn_dnld_app"><span>앱다운로드</span></a>
+		<button type="button" class="btn_cls_this"><span>앱다운로드 배너 닫기</span></button>
+	</div>	
+	<!-- //190918 앱다운로드 유도 영역 -->
+  <div class="wrap_tit">
+
+		<!-- sub type -->
+		<h1 class="tit">가나다라마바사아자차카타파하</h1>
+
+   		<a href="#" class="btn_go_back"><span class="blind">뒤로 가기</span></a>
+
+		<a href="#" class="btn_srh"><span class="blind">검색페이지로 이동</span></a>
+		<!-- [D] 장바구니 상품 담기면 .cart_item_count요소에 counting 클래스 추가 -->
+		<a href="#" class="btn_move_cart" role="text">
+	    	<div class="cart_item_count ">
+	      		<span class="blind">장바구니</span>
+				<strong class="num">99</strong>
+				<span class="blind">개 담겨있음</span>
+	    	</div>
+		</a>
+  </div>
+
+</header>
+<!--// header -->
+
+
+<div id="container">
+<div id="content">
+	<div class="wrap_joinus">
+		<h2 class="blind">회원가입</h2>
+		<form action="#">
+			<fieldset>
+				<legend class="blind">회원가입 폼</legend>
+				<div class="fld_joinus">
+					<p class="txt_notice">정보를 정확히 입력해주셔야 아이디나 비밀번호 분실 시 찾으실 수 있습니다.</p>
+					<div class="ipbx_item ipbx_id">
+						<span class="u_ipbx">
+							<input type="text" id="id" class="int h40">
+							<label for="id" class="lbl">아이디 영문, 숫자 조합 6~12자</label>
+						</span>
+						<button type="button" class="u_btn id_chk">중복확인</button>
+						<p class="txt_accept">사용할 수 있는 아이디 입니다.</p> <!-- [D] 사용자 입력시 승인 메세지 txt_accept -->
+					</div>
+					<div class="ipbx_item ip_pw"><!-- ip_pw class추가 -->
+						<span class="u_ipbx">
+							<input type="text" id="password" class="int h40">
+							<label for="password" class="lbl">비밀번호 영문, 숫자, 특수문자 조합 8~12자</label>
+						</span>
+						<p class="txt_warning">사용가능 특수문자 :  !"#$%&'()*+,-./:;<=>?@[＼]^_`{|} </p><!-- 특수문자 텍스트추가  -->
+						<span class="u_ipbx">
+							<input type="text" id="passwordAgain" class="int h40">
+							<label for="passwordAgain" class="lbl">비밀번호 다시 입력</label>
+						</span>
+						<p class="txt_warning">4자리 이상 동일 문자가 반복되는 비밀번호는 사용할 수 없습니다.</p> <!-- [D] 사용자 입력시 경고 메세지 txt_warning -->
+					</div>
+					<div class="ipbx_item">
+						<span class="u_ipbx">
+							<input type="text" id="name" class="int h40">
+							<label for="name" class="lbl">이름</label>
+						</span>
+						<p class="txt_warning">이름은 2자 이상 입력해주세요.</p>
+					</div>
+					<div class="ipbx_item">
+						<span class="u_ipbx">
+							<input type="text" id="birthdate" class="int h40">
+							<label id="birthdate" class="lbl">생년월일 예: 19870101</label>
+						</span>
+						<p class="txt_warning">생년월일은 숫자 8자리로 입력해주세요.</p> <!-- [D] 사용자 입력시 경고 메세지 -->
+					</div>
+					<div class="ipbx_item">
+						<span class="u_ipbx">
+							<input type="text" id="cellPhone" class="int h40">
+							<label for="cellPhone" class="lbl">휴대폰번호 -없이 입력</label>
+						</span>
+						<p class="txt_warning">휴대폰번호는 숫자로만 입력해주세요.</p> <!-- [D] 사용자 입력시 경고 메세지 -->
+					</div>
+					<div class="ipbx_item ipbx_email">
+						<span class="u_ipbx">
+							<input type="text" id="email" class="int h40">
+							<label for="email" class="lbl">이메일</label>
+						</span>
+						<!-- <span class="txt_at">@</span> 2015-12-15 삭제 -->
+						<div class="sel_email">
+							<select title="선택옵션" class="u_d_sel ln_blue">
+								<option selected="">선택해주세요</option>
+								<option>직접입력</option>
+							</select>
+						</div>
+						<p class="txt_warning">이메일을 입력해주세요.</p> <!-- [D] 사용자 입력시 경고 메세지 -->
+					</div>
+				</div>
+				<div class="fld_agree">
+					<span class="u_chkbx type2">
+						<input type="checkbox" id="ckbx1">
+						<label for="ckbx1" class="chk_all">전체 동의<span class="bin"></span></label>
+					</span>
+					<span class="u_chkbx type2">
+						<input type="checkbox" id="ckbx2">
+						<label for="ckbx2"><span class="txt_emph">(필수)</span> 이용약관 동의 <span class="bin"></span></label>
+						<a href="#none" class="link_paper">전문보기<span class="ic3_07"></span></a>
+					</span>
+					<span class="u_chkbx type2">
+						<input type="checkbox" id="ckbx3">
+						<label for="ckbx3"><span class="txt_emph">(필수)</span> 개인정보수집 및 이용 동의<span class="bin"></span></label>
+						<a href="#none" class="link_paper">전문보기<span class="ic3_07"></span></a>
+					</span>
+					<span class="u_chkbx type2">
+						<input type="checkbox" id="ckbx5">
+						<label for="ckbx5"><span class="txt_emph">(선택)</span> 심야 마케팅 수신 동의 (21~08시) <span class="bin"></span></label>
+					</span>
+					<div class="marketing_agree midnight">
+						<ul class="chkbx_wrap">
+							<li><span class="u_chkbx_sub"><input type="checkbox" id="midnight_marketing_sms"><label for="midnight_marketing_sms">SMS <span class="bin"></span></label></span></li>
+							<li><span class="u_chkbx_sub"><input type="checkbox" id="midnight_marketing_phone"><label for="midnight_marketing_phone">전화 <span class="bin"></span></label></span></li>
+						</ul>
+					</div>
+					<span class="u_chkbx type2">
+						<input type="checkbox" id="ckbx4">
+						<label for="ckbx4"><span class="txt_emph">(선택)</span> 마케팅 수신 동의 <span class="bin"></span></label>
+					</span>
+					<div class="marketing_agree">
+						<ul class="chkbx_wrap">
+							<li><span class="u_chkbx_sub"><input type="checkbox" id="marketing_email"><label for="marketing_email">이메일 <span class="bin"></span></label></span></li>
+							<li><span class="u_chkbx_sub"><input type="checkbox" id="marketing_sms"><label for="marketing_sms">SMS <span class="bin"></span></label></span></li>
+							<li><span class="u_chkbx_sub"><input type="checkbox" id="marketing_phone"><label for="marketing_phone">전화 <span class="bin"></span></label></span></li>
+							<li><span class="u_chkbx_sub"><input type="checkbox" id="marketing_catalog"><label for="marketing_catalog">카탈로그 <span class="bin"></span></label></span></li>
+						</ul>
+						<p>모든 항목 수신 동의 시 1천원 쇼핑플러스 쿠폰이 지급됩니다.<br>(사용기간: 다운로드 후 1주일/3만원 이상 구매시 사용가능/일부상품 제외)</p>
+					</div>
+				</div>
+				<div class="term_info">
+					<strong class="tit_info">개인정보 수집·이용에 대한 안내</strong>
+					<table class="tbl_info">
+						<caption class="screen_hide">개인정보 수집·이용에 대한 안내 표</caption>
+						<colgroup>
+							<col class="col1">
+							<col class="col1">
+							<col class="col1">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>목적</th>
+								<th>항목</th>
+								<th>보유기간</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="emphasis">회원계정의 생성</td>
+								<td>ID, 비밀번호</td>
+								<td class="emphasis">회원 탈퇴 후 2개월 까지</td>
+							</tr>
+							<tr>
+								<td class="emphasis">중복가입 확인, 고지의 전달, 의사소통 경로의 확보</td>
+								<td>성명, 휴대폰번호, 생년월일, 이메일 주소</td>
+								<td class="emphasis">회원 탈퇴 후 2개월 까지</td>
+							</tr>
+						</tbody>
+					</table>
+					<ul class="term_guide">
+						<li>필수로 수집되는 개인정보는 서비스 이용에 필요한 최소한의 정보로 동의를 해주셔야만 서비스를 이용하실 수 있습니다. </li>
+						<li>선택적으로 수집되는 정보에 대한 동의는 거부하실 수 있으며, 거부하시더라도 회원가입, 상품주문 등 기본 서비스 이용에는 제한을 받지 않습니다.</li>
+					</ul>
+					<strong class="tit_info">심야 마케팅 수신에 대한 안내</strong>
+					<table class="tbl_info">
+						<caption class="screen_hide">심야 마케팅 수신에 대한 안내표</caption>
+						<colgroup>
+							<col class="col1">
+							<col class="col1">
+							<col class="col1">
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">목적</th>
+								<th scope="col">항목</th>
+								<th scope="col">보유기간</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="emphasis">심야 (21시~08시) 시간 중 사은/판촉행사 등 각종 이벤트, 행사 관련 정보안내 및 제반 마케팅 활동, 당사 및 제휴사 상품/서비스 안내 및 권유</td>
+								<td>휴대폰번호, 전화번호</td>
+								<td class="emphasis">심야 마케팅 동의 철회시</td>
+							</tr>
+						</tbody>
+					</table>
+					<strong class="tit_info">마케팅 수신에 대한 안내</strong>
+					<table class="tbl_info">
+						<caption class="screen_hide">마케팅 수신에 대한 안내표</caption>
+						<colgroup>
+							<col class="col1">
+							<col class="col1">
+							<col class="col1">
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">목적</th>
+								<th scope="col">항목</th>
+								<th scope="col">보유기간</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="emphasis">사은/판촉행사 등 각종 이벤트, 행사 관련 정보안내 및 제반 마케팅 활동, 당사 및 제휴사 상품/서비스 안내 및 권유</td>
+								<td>이메일, 휴대폰번호, 전화번호, 주소</td>
+								<td class="emphasis">회원 탈퇴 후 30일 까지</td>
+							</tr>
+						</tbody>
+					</table>
+					<span class="txt_limit">CJ오쇼핑 이용약관 및 개인정보 동의 내용을 확인하였으며, 위 내용에 동의합니다. 만 14세 미만 아동은 회원가입이 제한됩니다.</span>
+				</div>
+				<button type="button" class="u_btn btn_done">가입완료</button>
+			</fieldset>
+		</form>
+	</div>
+</div>
+</div>
+<div class="lay_wrap" style="display:none"> <!-- [D] 가입완료 팝업 -->
+	<div class="ly_msgwrap">
+		<div class="ly_msgct">
+			<h1>CJmall 회원가입이<br>완료되었습니다.</h1>
+		</div>
+		<div class="ly_btn_area">
+			<div class="btn_in_wrap">
+				<div class="u_td"><button type="button" class="u_btn btn_chk"><span class="txt">확인</span></button></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+<!-- footer -->
+<div id="footer">
+		<div class="footer_wrap">
+			
+			<div class="foot_btn">
+				<!-- 로그인 전 -->
+				<ul class="tbl_type" style="display:none">
+				<li><a href="#" class="btn_type">고객센터</a></li>
+				<li><a href="#" class="btn_type">로그인</a></li>
+				<li><a href="#" class="btn_type">APP설치</a></li>
+				<li><a href="#" class="btn_type">PC버전</a></li>
+				</ul>
+				<!-- //로그인 전 -->
+				<!-- 로그인 후 -->
+				<ul class="tbl_type">
+				<li><a href="#" class="btn_type">고객센터</a></li>
+				<li><a href="#" class="btn_type">로그아웃</a></li>
+				<li><a href="#" class="btn_type">PC버전</a></li>
+				</ul>
+				<!-- //로그인 후 -->
+			</div>
+			<div class="foot_policy">
+				<h3 class="blind">CJOshopping 사업자 연락정보 및 약관</h3>
+				<address class="foot_contact">
+					<p>(주)씨제이이엔엠 대표이사 허민회, 허민호</p>
+					<p>주소 : 06761 서울시 서초구 과천대로 870-13</p>
+					<p><span>호스팅제공자 : (주)CJ ENM</span><span>사업자등록번호 : 106-81-51510</span></p>
+					<p><span>통신판매업신고 : 서초 제 000015호</span><span>개인정보관리책임자 : IT담당 김유정</span></p>
+					<p><span>이메일 : webmaster@cjmall.com</span><span>고객센터 : <a href="tel:1644-2525" class="lk_type">1644-2525</a>(유료)</span></p>
+				</address>
+				<ul class="foot_terms">
+				<li><a href="#" class="lk_type">회사소개</a></li>
+				<li><a href="#" class="lk_type">사업자정보확인</a></li>
+				<li><a href="#" class="lk_type">이용약관</a></li>
+				<li><a href="#" class="lk_type"><strong>개인정보처리방침</strong></a></li>
+				<li><a href="#" class="lk_type">정기배송 이용약관</a></li>
+				<li><a href="#" class="lk_type">청소년보호정책</a></li>
+				<li><a href="#" class="lk_type">법적고지</a></li>
+				<li><a href="#" class="lk_type">국민은행구매안전서비스</a></li>
+				<li><a href="#" class="lk_type">오픈소스라이센스고지</a></li>
+				</ul>
+				<small class="copyright">Copyright(C) CJ O Shopping All Rights Reserved.</small>
+			</div>
+		</div>
+		<!-- 하단 유틸 바 -->
+		<div class="wrap_bar_util">
+			<ul class="bar_util">
+				<li><a href="#" class="btn_home">홈</a></li>
+				<li><a href="#" class="btn_menu">카테고리</a></li>
+				<li><a href="#" class="btn_schedule">편성표</a></li>
+				<li><a href="#" class="btn_myzone">마이존</a></li>
+				<li>
+				<a href="#" class="btn_latest">
+					<span><img src="http://dev-image2.cjmall.net/public/confirm/static/deploy/webjars/ec-markup-common/dist/common-cjmall-mobile/others/1ee231d064a9e75573a5e0775efd8fcb/img/common/cjmall/temp/@temp_goods.jpg" alt=""></span>
+					최근본상품
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!--// 하단 유틸 바 -->
+
+</div>
+<!-- //footer -->
+
+</div>
+</body>
+</html>

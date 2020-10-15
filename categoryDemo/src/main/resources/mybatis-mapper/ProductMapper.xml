@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ProductMapper">
+ 	
+ 	 <resultMap id="ProductListTupleMap"  type="ProductTuple">
+    	<result column="product_no"		property="productNo"	/>
+    	<result column="product_name"	property="productName"	/>
+    	<result column="brand_name"		property="brandName"	/>
+    	<result column="product_price"	property="productPrice"	/>
+    	<result column="category_no"	property="categoryNo"	/>
+    	<result column="parent_no"		property="parentNo"	/>
+    	<result column="category_name"	property="categoryName"	/>
+    	<result column="category_full_name"	property="categoryFullName"	/>
+	</resultMap>
+	
+ 	<select id="selectProductList" parameterType="Integer" resultMap="ProductListTupleMap">
+ 		SELECT p.product_no
+	 		,p.product_name
+	 		,p.brand_name
+	 		,p.product_price
+	 		,p.category_no
+	 		,c.parent_no
+	 		,c.category_name
+	 		,CONCAT_WS('-',(SELECT s.category_name FROM category s WHERE s.category_no =c.parent_no),c.category_name) AS category_full_name
+ 	    FROM product p
+ 	    	,category c
+ 	    <if test="categoryId != null and categoryId != ''">	
+ 	    WHERE p.category_no = #{categoryId}
+ 	     AND  p.category_no =c.category_no
+ 	     </if>
+ 	    ORDER BY p.product_no
+ 	</select>
+ 	
+ 	<select id="selectProduct" parameterType="Integer" resultMap="ProductListTupleMap">
+ 		SELECT p.product_no
+	 		,p.product_name
+	 		,p.brand_name
+	 		,p.product_price
+	 		,p.category_no
+	 		,c.parent_no
+	 		,c.category_name
+	 		,CONCAT_WS('-',(SELECT s.category_name FROM category s WHERE s.category_no =c.parent_no),c.category_name) AS category_full_name
+ 	    FROM product p
+ 	    	,category c
+ 	    WHERE p.product_no = #{productId}
+ 	     AND  p.category_no =c.category_no
+ 	</select>
+ 	
+ 	<update id="update" parameterType="ProductCriteria" >
+	  UPDATE product
+    	<trim prefix='SET' suffixOverrides=','>
+		<if test="productName != null and productName != ''">	
+	        product_name=#{productName},
+    	</if>
+    	<if test="productPrice != null and productPrice != ''">
+        	product_price=#{productPrice},
+    	</if>
+    	</trim>
+		WHERE product_no = #{productNo}
+ 	</update>
+ 	
+ 	<insert id="insert" parameterType="ProductCriteria" >
+ 	    INSERT INTO product
+    	(
+    		  product_no
+    		, product_name
+    		, brand_name
+    		, product_price
+    		, category_no
+    	) VALUES (
+    	 	(SELECT NVL(MAX(product_no),0)+1 FROM product)
+    		, #{productName}
+    		, #{brandName}
+    		, #{productPrice}
+    		, #{categoryNo}
+    	)
+ 	</insert>
+ 	
+ 	<delete id="delete" parameterType="ProductCriteria">
+    DELETE
+    FROM product
+    <if test="productNo != null and productNo != ''">	
+    WHERE product_no =  #{productNo}
+    </if>
+  	</delete>
+  
+</mapper>

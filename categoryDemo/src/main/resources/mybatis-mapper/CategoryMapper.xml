@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CategoryMapper">
+
+ 	 <resultMap id="CategoryTupleMap"  type="CategoryTuple">
+    	<result column="category_no"	property="categoryNo"	/>
+    	<result column="category_name"	property="categoryName"	/>
+    	<result column="parent_no"		property="parentNo"		/>
+    	<result column="depth"			property="depth"		/>
+    	<result column="parent_name"	property="parentName"		/>
+    	<result column="category_full_name"	property="categoryFullName"		/>
+	</resultMap>
+ 	
+ 	<select id="selectCategoryList" resultMap="CategoryTupleMap">
+ 		SELECT f.category_no
+ 			   ,f.category_name
+ 			   ,f.parent_no
+ 			   ,f.depth
+ 			   ,CONCAT_WS('-',(SELECT s.category_name FROM category s WHERE s.category_no = f.parent_no),f.category_name) AS category_full_name
+ 	    FROM category f
+ 	    order by f.category_no
+ 	</select>
+ 	
+ 	<select id="selectCategory" parameterType="Integer" resultMap="CategoryTupleMap">
+ 		SELECT f.category_no
+ 			   ,f.category_name
+ 			   ,f.parent_no
+ 			   ,f.depth
+ 			   ,CONCAT_WS('-',(SELECT s.category_name FROM category s WHERE s.category_no = f.parent_no),f.category_name) AS category_full_name
+ 	    FROM category f
+ 	    WHERE category_no = #{categoryNo}
+ 	    order by f.category_no
+ 	</select>
+
+ 	<update id="update" parameterType="CategoryCriteria" >
+	  UPDATE category
+	    <trim prefix='SET' suffixOverrides=','>
+		<if test="categoryName != null and categoryName != ''">	
+	         category_name=#{categoryName}
+    	</if>
+    	</trim>
+		WHERE category_no = #{categoryNo}
+ 	</update>
+ 	
+ 	<insert id="insert" parameterType="CategoryCriteria" >
+ 	    INSERT INTO category
+    	(	category_no
+    		, category_name
+    		, parent_no
+    		, depth
+    	) VALUES (
+    	 	 (SELECT NVL(MAX(category_no),0)+1 FROM category)
+    		, #{categoryName}
+    		, #{parentNo}
+    		, #{depth}
+    	)
+ 	</insert>
+	
+	<delete id="delete" parameterType="CategoryCriteria">
+    DELETE
+    FROM category
+    <if test="categoryNo != null and categoryNo != ''">	
+    WHERE category_no =  #{categoryNo}
+	</if>
+    
+  </delete>
+</mapper>

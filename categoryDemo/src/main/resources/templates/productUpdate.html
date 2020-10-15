@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>Checkout example · Bootstrap</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/checkout/">
+ <script src="/js/form-validation.js"></script>
+    <!-- Bootstrap core CSS -->
+<link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="/css/form-validation.css" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+    <div class="container">
+  <div class="py-5 text-center">
+    <h2>상품 수정</h2>
+  </div>
+
+      <h4 class="mb-3">상품 정보 조회</h4>
+      <form  id="myForm" novalidate >
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">상품번호</label>
+            <input type="text" class="form-control" id="productNo" placeholder="" th:value="${productInfo.productNo}"  readonly >
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName">상품명</label>
+            <input type="text" class="form-control" id="productName" placeholder=""  th:value="${productInfo.productName}" required>
+            <div class="invalid-feedback">
+              상품명은 필수값 입니다 
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-5 mb-3">
+            <label for="country">카테고리</label>
+            <select class="custom-select d-block w-100" id="categoryNo" disabled th:value="${productInfo.categoryNo}">
+              <option value="">Choose...</option>
+              <option value="1">스킨케어</option>
+              <option value="2">메이크업</option>
+              <option value="3">생활용품</option>
+              <option value="4">뷰티푸드</option>
+              <option value="5">남성</option>
+              <option value="6">소품</option>
+              <option value="7">스킨케어-크랜징폼</option>
+              <option value="8">스킨케어-클랜징 티슈</option>
+              <option value="9">메이크업-립스틱</option>
+              <option value="10">메이크업-립글로즈</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="cc-name">브랜드명</label>
+            <input type="text" class="form-control" id="brandName" th:value="${productInfo.brandName}" placeholder="" readonly>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="cc-number">상품가격</label>
+            <input type="number" class="form-control" id="productPrice" th:value="${productInfo.productPrice}" placeholder="" required>
+            <div class="invalid-feedback">
+              상품가격은 필수값 입니다
+            </div>
+          </div>
+        </div>
+
+        <hr class="mb-4">
+        <button id="btn-update" class="_bts btn btn-primary btn-lg btn-block" type="button">저장</button>
+        <button id="btn-delete" class="btn btn-secondary btn-lg btn-block" type="button">삭제</button>
+        <button id="btn-delete-all"  class="btn btn-block btn-lg btn-danger" type="button">전체삭제</button>
+        
+      </form>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2020 Amorepacific</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+</div>
+
+
+       
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+          
+            <script src="/js/app/product.js"></script> 
+<script type="text/javascript">
+var categoryId = '[[${productInfo.categoryNo}]]';
+ $('#categoryNo').val(categoryId);
+ </script>
+</body>
+</html>
